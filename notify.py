@@ -2,6 +2,7 @@ from plyer import notification
 import requests
 from bs4 import BeautifulSoup
 import time
+from twilio.rest import Client
 
 
 def notify(title, message):
@@ -13,7 +14,14 @@ def get_data_from_url(url):
     return requests.get(url).text
 
 
-if __name__ == '__main__':
+def whatsapp_message(message):
+    account_sid = ''
+    account_auth_token = ''
+    client = Client(account_sid, account_auth_token)
+    client.messages.create(body=message, from_='whatsapp:+14155238886', to='whatsapp:')
+
+
+if __name__ == "__main__":
     while True:
         HTML_data = get_data_from_url('https://www.mohfw.gov.in/')
         # print(HTML_data)
@@ -33,6 +41,7 @@ if __name__ == '__main__':
                 title = 'Covid19'
                 message = f'State - {statewise_info_list[1]}\nConfirmed(Indian) - {statewise_info_list[2]} ; Confirmed(Foreign) - {statewise_info_list[3]} ; Cured - {statewise_info_list[4]} ; Death - {statewise_info_list[5]}'
                 notify(title, message)
+                whatsapp_message(message)
                 time.sleep(2)
 
         time.sleep(3600)  # Notification after every 1 hour (3600 secs)
