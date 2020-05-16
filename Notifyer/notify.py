@@ -7,7 +7,7 @@ from twilio.rest import Client
 
 def notify(title, message):
     notification.notify(title=title, message=message,
-                        app_icon="C:\\Users\HP\Desktop\Covid-19 Desktop Notification\icon.ico", timeout=10)
+                        app_icon="C:\\Users\HP\Github\Covid-19 Desktop Notification\icon.ico", timeout=10)
 
 
 def get_data_from_url(url):
