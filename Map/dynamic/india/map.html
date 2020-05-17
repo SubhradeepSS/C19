@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Corona India</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
+        <link rel="stylesheet" href="map.css">  
+    </head>
+    <body>
+        <div id="map"></div>
+    </body>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <script>
+        mapboxgl.accessToken = '';
+        //var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v10',
+        center: [77.947998, 23.473324],
+        zoom: 4
+    });
+    </script>
+    <script src="map.js"></script>
+</html>
