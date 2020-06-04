@@ -36,6 +36,11 @@
             "longi": 81.828232
         },
         {
+            "name": "Dadar Nagar Haveli",
+            "lati": 20.1809,
+            "longi": 73.0169
+        },
+        {
             "name": "Delhi",
             "lati": 28.6448,
             "longi": 77.216721
@@ -111,7 +116,7 @@
             "longi": 92.717636
         },
         {
-            "name": "Nagaland#",
+            "name": "Nagaland",
             "lati": 25.906267,
             "longi": 93.727592
         },
@@ -134,6 +139,11 @@
             "name": "Rajasthan",
             "lati": 27.391277,
             "longi": 73.432617
+        },
+        {
+            "name": "Sikkim",
+            "lati": 27.338936,
+            "longi": 88.606506
         },
         {
             "name": "Tamil Nadu",
