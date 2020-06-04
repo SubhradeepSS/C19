@@ -9,12 +9,32 @@
     </ul>
 </div> */}
 
+{/* <span class="badge badge-danger">Active</span>
+      <span class="badge badge-success">Cured</span>
+      <span class="badge badge-secondary">Death</span>
+      <span class="badge badge-dark">Total</span> */}
+
 let stats = document.getElementById('stats');
 const url = "http://covid19-india-adhikansh.herokuapp.com/states";
-let statesList;
+const netStatURL = "http://covid19-india-adhikansh.herokuapp.com/summary";
+
+let netStats = document.getElementById('netStats');
 
 function update() {
-    statesList = []
+
+    fetch(netStatURL)
+    .then(response => response.json())
+    .then(data => {
+        let activeT = data["Active cases"];
+        let curedT = data["Cured/Discharged/Migrated"];
+        let deathT = data["Death"];
+        let totalT = data["Total Cases"]
+        netStats.innerHTML = `<span class="badge badge-danger">Active: ${activeT}</span>
+                                <span class="badge badge-success">Cured: ${curedT}</span>
+                                <span class="badge badge-secondary">Death: ${deathT}</span>
+                                <span class="badge badge-dark">Total: ${totalT}</span>`
+    })
+
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -25,7 +45,7 @@ function update() {
                 let death = state.death;
                 let total = state.total;
 
-                statesList.push(name);
+                // statesList.push(name);
                 
                 // let html = "";
                 stats.innerHTML += `<div class="card my-3 mx-3" style="width: 18rem;">
