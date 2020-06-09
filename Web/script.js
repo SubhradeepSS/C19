@@ -14,7 +14,14 @@
       <span class="badge badge-secondary">Death</span>
       <span class="badge badge-dark">Total</span> */}
 
-let stats = document.getElementById('stats');
+{/* <tr>
+    <th scope="row">1</th>
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>@mdo</td>
+</tr>  */}
+
+    // let stats = document.getElementById('stats');
 const url = "http://covid19-india-adhikansh.herokuapp.com/states";
 // const netStatURL = "https://covid-19india-api.herokuapp.com/all";
 const netStatURL = "https://api.covidindiatracker.com/total.json";
@@ -22,6 +29,7 @@ const netStatURL = "https://api.covidindiatracker.com/total.json";
 const stateData = "https://api.covidindiatracker.com/state_data.json";
 
 let netStats = document.getElementById('netStats');
+let tableBody = document.getElementById('tableBody');
 
 function update() {
 
@@ -37,10 +45,10 @@ function update() {
             let rchanges = data["rchanges"];
             let dchanges = data["dchanges"];
 
-            netStats.innerHTML = `<span class="badge badge-danger my-3 mx-3">Active:<br>${active}(+${achanges})</span>
-                                <span class="badge badge-success my-3 mx-3">Recovered:<br>${recovered}(+${rchanges})</span>
-                                <span class="badge badge-secondary my-3 mx-3">Deaths:<br>${deaths}(+${dchanges})</span>
-                                <span class="badge badge-dark my-3 mx-3">Confirmed:<br>${confirmed}(+${cchanges})</span>
+            netStats.innerHTML = `<span class="badge badge-danger my-3 mx-3">Active :<br>${active}(+${achanges})</span>
+                                <span class="badge badge-success my-3 mx-3">Recovered :<br>${recovered}(+${rchanges})</span>
+                                <span class="badge badge-secondary my-3 mx-3">Deaths :<br>${deaths}(+${dchanges})</span>
+                                <span class="badge badge-dark my-3 mx-3">Confirmed :<br>${confirmed}(+${cchanges})</span>
                                 `;
         })
 
@@ -60,17 +68,24 @@ function update() {
                 let cChanges = element.cChanges;
                 let rChanges = element.rChanges;
 
-                stats.innerHTML += `<div class="card my-3 mx-3" style="width: 18rem;">
-                                        <div class="card-header">
-                                            <h3>${state}</h3>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item Active">Active: ${active} (+${aChanges})</li>
-                                            <li class="list-group-item Cured">Cured: ${recovered} (+${rChanges})</li>
-                                            <li class="list-group-item Death">Deaths: ${deaths} (+${dChanges})</li>
-                                            <li class="list-group-item">Confirmed: ${confirmed} (+${cChanges})</li>
-                                        </ul>
-                                    </div>`;
+                // stats.innerHTML += `<div class="card my-3 mx-3" style="width: 18rem;">
+                //                         <div class="card-header">
+                //                             <h3>${state}</h3>
+                //                         </div>
+                //                         <ul class="list-group list-group-flush">
+                //                             <li class="list-group-item Active">Active: ${active} (+${aChanges})</li>
+                //                             <li class="list-group-item Cured">Cured: ${recovered} (+${rChanges})</li>
+                //                             <li class="list-group-item Death">Deaths: ${deaths} (+${dChanges})</li>
+                //                             <li class="list-group-item">Confirmed: ${confirmed} (+${cChanges})</li>
+                //                         </ul>
+                //                     </div>`;
+                tableBody.innerHTML += `<tr>
+                                        <td>${state}</td>
+                                        <td>${active} (+${aChanges})</td>
+                                        <td>${recovered} (+${rChanges})</td>
+                                        <td>${deaths} (+${dChanges})</td>
+                                        <td>${confirmed} (+${cChanges})</td>
+                                    </tr>`
             })
 
         })
@@ -84,14 +99,17 @@ let searchState = document.getElementById('searchState');
 
 searchState.addEventListener('input', () => {
     let inputText = searchState.value.toLowerCase();
-    let stateCard = document.getElementsByClassName('card');
+    let stateCard = document.getElementsByTagName('tr');
     Array.from(stateCard).forEach(element => {
-        let state = element.getElementsByTagName('h3')[0].innerText.toLowerCase();
-        if (state.includes(inputText)) {
-            element.style.display = "block";
-        }
-        else {
-            element.style.display = "none";
+        let td = element.getElementsByTagName('td');
+        if(td[0]!==undefined){
+            let state = td[0].innerText.toLowerCase();
+            if (state.includes(inputText)) {
+                element.style.display = "table-row";
+            }
+            else {
+                element.style.display = "none";
+            }
         }
     })
 })

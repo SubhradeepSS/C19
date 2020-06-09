@@ -9,13 +9,13 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <title>Covid19</title>
+
+  <title>Helpline</title>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">India</a>
+    <a class="navbar-brand" href="#">Helpline</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,55 +24,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/Web/world/index.html" target="_blank">World <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/Map/dynamic/india/map.html">Map <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="https://www.mohfw.gov.in/" target="_blank">MOHFW Website <span
-              class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/Web/timeseries/index.html" target="_blank">India TimeSeries Data <span
-              class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/Web/stateTimeseries/index.html" target="_blank">State TimeSeries Data <span
-              class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/Web/helpline/index.html" target="_blank">Helpline <span
-              class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/Web/headlines/index.html" target="_blank">Headlines <span
-              class="sr-only">(current)</span></a>
-        </li>
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input id="searchState" class="form-control mr-sm-2" type="search" placeholder="Search State"
-          aria-label="Search">
+        <input class="form-control mr-sm-2" id="searchState" type="search" placeholder="Search State / UT" aria-label="Search">
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
       </form>
     </div>
   </nav>
 
   <div class="container my-3">
-    <h2 id="netStats"></h2>
-    <!-- <div id="stats" class="row container-fluid"> 
-
-    </div> -->
+    <div class="alert alert-warning" role="alert">
+      <h3>Helpline Number : <span class="badge badge-light"> +91-11-23978046 </span> Toll Free :
+        <span class="badge badge-light"> 1075 </span> Helpline Email ID :
+        <span class="badge badge-light"> <a href="mailto:ncov2019@gov.in">ncov2019@gov.in </a></span>
+      </h3>
+    </div>
     <table class="table table-bordered table-hover table-dark">
       <thead>
         <tr>
           <!-- <th scope="col">#</th>
           <th scope="col">First</th> -->
           <th scope="col">State / Union Territory</th>
-          <th scope="col">Active</th>
-          <th scope="col">Cured</th>
-          <th scope="col">Deaths</th>
-          <th scope="col">Confirmed</th>
+          <th scope="col">Helpline Number</th>
         </tr>
       </thead>
       <tbody id="tableBody">
@@ -92,7 +68,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+  <script src="/Web/helpline/script.js"></script>
 </body>
 
 </html>
