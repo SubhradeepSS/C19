@@ -28,8 +28,9 @@
                 </li>
 
             </ul>
+            <button type="button" class="btn btn-info mx-3" id="updateButton" onclick="smoothScroll(document.getElementById('updatesDiv'))">View Top Updates</button>
             <form class="form-inline my-2 my-lg-0">
-                <input id="searchState" class="form-control mr-sm-2" type="search" placeholder="Search"
+                <input id="searchCountry" class="form-control mr-sm-2" type="search" placeholder="Search Country"
                     aria-label="Search">
                 <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
             </form>
@@ -38,7 +39,24 @@
     <div id="statsRow" class="alert alert-warning my-3" role="alert">
 
     </div>
-    <div class="my-3 mx-3">
+    <div class="container" id="countries">
+        <table class="table table-bordered table-hover table-dark">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th>
+                <th scope="col">First</th> -->
+                <th scope="col">Country</th>
+                <th scope="col">Confirmed</th>
+                <th scope="col">Cured</th>
+                <th scope="col">Deaths</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+      
+            </tbody>
+          </table>
+    </div>
+    <div id="updatesDiv" class="my-3 mx-3">
         <h1 class="alert alert-info my-3" role="alert">Top Updates</h1>
         <ul class="list-group my-3" id="updates">
             

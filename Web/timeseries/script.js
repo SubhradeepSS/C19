@@ -1,5 +1,5 @@
 let my_chart;
-function axesLinearChart(cases_list, recovered_list, deaths_list, dates) {
+function axesLinearChart(cases_list, recovered_list, deaths_list, active_list, dates) {
 
     if (my_chart) {
         my_chart.destroy();
@@ -25,6 +25,13 @@ function axesLinearChart(cases_list, recovered_list, deaths_list, dates) {
             }, {
                 label: 'Deaths',
                 data: deaths_list,
+                fill: false,
+                borderColor: '#A9A9A9',
+                backgroundColor: '#A9A9A9',
+                borderWidth: 1
+            }, {
+                label: 'Active',
+                data: active_list,
                 fill: false,
                 borderColor: '#f44336',
                 backgroundColor: '#f44336',
@@ -58,13 +65,14 @@ fetch(url)
     .then(DATA => {
         // console.log(data);
         let data = DATA.cases_time_series;
-        let confirmed = [], death = [], recovered = [], date = [];
+        let active = [], confirmed = [], death = [], recovered = [], date = [];
 
         data.forEach(element => {
             confirmed.push(parseInt(element.totalconfirmed));
             death.push(parseInt(element.totaldeceased));
             recovered.push(parseInt(element.totalrecovered));
+            active.push(parseInt(element.totalconfirmed)-parseInt(element.totaldeceased)-parseInt(element.totalrecovered));
             date.push(element.date);
         });
-        axesLinearChart(confirmed, recovered, death, date);
+        axesLinearChart(confirmed, recovered, death, active, date);
     })

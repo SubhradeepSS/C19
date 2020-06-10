@@ -45,10 +45,10 @@ function update() {
             let rchanges = data["rchanges"];
             let dchanges = data["dchanges"];
 
-            netStats.innerHTML = `<span class="badge badge-danger my-3 mx-3">Active :<br>${active}(+${achanges})</span>
-                                <span class="badge badge-success my-3 mx-3">Recovered :<br>${recovered}(+${rchanges})</span>
-                                <span class="badge badge-secondary my-3 mx-3">Deaths :<br>${deaths}(+${dchanges})</span>
-                                <span class="badge badge-dark my-3 mx-3">Confirmed :<br>${confirmed}(+${cchanges})</span>
+            netStats.innerHTML = `<h2><span class="badge badge-danger my-3 mx-3">Active: ${active}(+${achanges})</span>
+                                <span class="badge badge-success my-3 mx-3">Recovered: ${recovered}(+${rchanges})</span>
+                                <span class="badge badge-secondary my-3 mx-3">Deaths: ${deaths}(+${dchanges})</span>
+                                <span class="badge badge-dark my-3 mx-3">Confirmed: ${confirmed}(+${cchanges})</span></h2>
                                 `;
         })
 
