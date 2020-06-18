@@ -21,10 +21,10 @@ fetch(cors + url)
         let death_rate = stats.death_rate;
         let recovered_rate = stats.recovered_rate;
 
-        statsRow.innerHTML = `<h2><span class="badge badge-dark">Confirmed : ${confirmed_cases}</span>
+        statsRow.innerHTML = `<h3><span class="badge badge-dark">Confirmed : ${confirmed_cases}</span>
                             <span class="badge badge-danger">Active : ${active_cases} (@${active_rate})</span>
                             <span class="badge badge-success">Recovered : ${recovered_cases} (@${recovered_rate})</span>
-                            <span class="badge badge-secondary">Death : ${death_cases} (@${death_rate})</span></h2>`;
+                            <span class="badge badge-secondary">Death : ${death_cases} (@${death_rate})</span></h3>`;
 
 
 
