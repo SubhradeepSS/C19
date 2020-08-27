@@ -1,6 +1,6 @@
 function axesLinearChart(id, cases_list, dates) {
     let graph = document.getElementById(`graph${id}`).getContext("2d");
-    var chart = new Chart(graph, {
+    new Chart(graph, {
         type: 'line',
         data: {
             datasets: [{
@@ -38,7 +38,6 @@ let accordionExample = document.getElementById("accordionExample");
 fetch(url)
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
         data.forEach((e, index) => {
             let state = e["State UT"];
             let dates = Object.keys(e);

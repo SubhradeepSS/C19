@@ -1,6 +1,5 @@
 let my_chart;
 function axesLinearChart(cases_list, recovered_list, deaths_list, active_list, dates) {
-
     if (my_chart) {
         my_chart.destroy();
     }
@@ -63,7 +62,6 @@ const url = "https://api.covid19india.org/data.json";
 fetch(url)
     .then(response => response.json())
     .then(DATA => {
-        // console.log(data);
         let data = DATA.cases_time_series;
         let active = [], confirmed = [], death = [], recovered = [], date = [];
 

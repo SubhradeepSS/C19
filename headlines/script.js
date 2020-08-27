@@ -6,7 +6,6 @@ let accordion = document.getElementById('headlinesAccordion');
 fetch(cors + url)
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
         let headlines = data.headlines;
         let summary = data.headlines_summary;
 

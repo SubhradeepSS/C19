@@ -65,11 +65,14 @@ fetch(url)
   .then(data => {
     data.forEach(element => {
       let state = element.state;
-      // console.log(id);
       let id = element.id.replace("IN-", "");
+
+      // Telangana state code: 
+      //   received from API: "TG",
+      //   in Zingchart: "TL"
       if(id == "TG")
-        id = "TS";
-      // console.log(id);
+        id = "TL";
+        
       let active = element.active;
       let confirmed = element.confirmed;
       let recovered = element.recovered;
@@ -82,9 +85,7 @@ fetch(url)
       chartConfig.shapes[1].options.style.items[id] = {
         tooltip: {
           text: `State : ${state}\nActive : ${active} (+${aChanges})\nDeaths : ${deaths} (+${dChanges})\nRecovered : ${recovered} (+${rChanges})\nConfirmed : ${confirmed} (+${cChanges})`,
-          // backgroundColor: '#ff5722'
         },
-        // backgroundColor: '#ff5722',
         label: {
           visible: true
         }

@@ -6,7 +6,6 @@ let tableBody = document.getElementById("tableBody");
 fetch(cors + url)
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
         data.contact_details.forEach(e => {
             tableBody.innerHTML += `<tr>
                                     <td>${e.state_or_UT}</td>

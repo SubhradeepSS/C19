@@ -11,7 +11,6 @@ fetch(cors + url)
     .then(data => {
         let stats = data.data;
         let updates = data.updates;
-        // console.log(data);
 
         let confirmed_cases = stats.confirmed_cases;
         let active_cases = stats.active_cases;
@@ -26,8 +25,6 @@ fetch(cors + url)
                             <span class="badge badge-success">Recovered : ${recovered_cases} (@${recovered_rate})</span>
                             <span class="badge badge-secondary">Death : ${death_cases} (@${death_rate})</span></h3>`;
 
-
-
         updates.forEach(e => {
             updatesDiv.innerHTML += `<li class="list-group-item list-group-item-action my-1">${e}</li>`;
         });
@@ -37,7 +34,6 @@ fetch(cors + url)
 fetch(globalC)
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
         data.Countries.forEach(e => {
             let country = e.Country;        
             let confirmed = e.TotalConfirmed;
@@ -76,24 +72,28 @@ searchCountry.addEventListener('input', () => {
     })
 })
 
-window.smoothScroll = function(target) {
-    var scrollContainer = target;
+window.smoothScroll = (target) => {
+    let scrollContainer = target;
     do { 
         scrollContainer = scrollContainer.parentNode;
         if (!scrollContainer) return;
         scrollContainer.scrollTop += 1;
     } while (scrollContainer.scrollTop == 0);
 
-    var targetY = 0;
+    let targetY = 0;
     do { 
-        if (target == scrollContainer) break;
+        if (target == scrollContainer) 
+            break;
         targetY += target.offsetTop;
     } while (target = target.offsetParent);
 
-    scroll = function(c, a, b, i) {
-        i++; if (i > 30) return;
+    scroll = (c, a, b, i) => {
+        i++; 
+        if(i > 30) 
+            return;
         c.scrollTop = a + (b - a) / 30 * i;
-        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+        setTimeout(() =>  scroll(c, a, b, i), 20);
     }
+    
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
