@@ -1,13 +1,6 @@
 const url = "https://covid-19india-api.herokuapp.com/helpline_numbers";
 const cors = "https://cors-anywhere.herokuapp.com/";
 
-{/* <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-</tr> */}
-
 let tableBody = document.getElementById("tableBody");
 
 fetch(cors + url)

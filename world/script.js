@@ -39,8 +39,7 @@ fetch(globalC)
     .then(data => {
         // console.log(data);
         data.Countries.forEach(e => {
-            let country = e.Country;
-            // // let active = e.active;          
+            let country = e.Country;        
             let confirmed = e.TotalConfirmed;
             let cChanges = e.NewConfirmed;
             let deaths = e.TotalDeaths;
@@ -79,14 +78,14 @@ searchCountry.addEventListener('input', () => {
 
 window.smoothScroll = function(target) {
     var scrollContainer = target;
-    do { //find scroll container
+    do { 
         scrollContainer = scrollContainer.parentNode;
         if (!scrollContainer) return;
         scrollContainer.scrollTop += 1;
     } while (scrollContainer.scrollTop == 0);
 
     var targetY = 0;
-    do { //find the top of target relatively to the container
+    do { 
         if (target == scrollContainer) break;
         targetY += target.offsetTop;
     } while (target = target.offsetParent);
@@ -96,6 +95,5 @@ window.smoothScroll = function(target) {
         c.scrollTop = a + (b - a) / 30 * i;
         setTimeout(function(){ scroll(c, a, b, i); }, 20);
     }
-    // start scrolling
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
