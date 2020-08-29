@@ -43,10 +43,10 @@ export default class IndiaTotal extends React.Component {
                         ? <div><h1>Loading</h1></div> 
                         : <div><h1>India Summary</h1>
                                 <p>
-                                Active: {this.state.data.active} (+{this.state.data.achanges})<br/>
-                                Recovered: {this.state.data.recovered} (+{this.state.data.rchanges})<br/>
-                                Deaths: {this.state.data.deaths} (+{this.state.data.dchanges})<br/>
-                                Confirmed: {this.state.data.confirmed} (+{this.state.data.cchanges})<br/>
+                                Active: {this.state.data.active} (+{this.state.data.achanges}), 
+                                Recovered: {this.state.data.recovered} (+{this.state.data.rchanges}), 
+                                Deaths: {this.state.data.deaths} (+{this.state.data.dchanges}), 
+                                Confirmed: {this.state.data.confirmed} (+{this.state.data.cchanges})
                                 </p> 
                             </div>
 

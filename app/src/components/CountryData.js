@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import StateTableRow from '../containers/StateTableRow'
+import CountryTableRow from '../containers/CountryTableRow'
 
 export default class IndiaState extends Component {
     constructor() {
@@ -11,11 +11,11 @@ export default class IndiaState extends Component {
     }
 
     componentDidMount() {
-        fetch("https://api.covidindiatracker.com/state_data.json")
+        fetch("https://api.covid19api.com/summary")
             .then(resp => resp.json())
             .then(data => {
                 this.setState({
-                    data: data,
+                    data: data.Countries,
                     isLoading: false
                 })
             })
@@ -29,32 +29,30 @@ export default class IndiaState extends Component {
                 </div>
             )
         
-        const stateRows = this.state.data.map(element => 
-            <StateTableRow 
+        const stateRows = this.state.data.map(e => 
+            <CountryTableRow 
                 data= {{
-                    state: element.state,
-                    active: element.active,
-                    confirmed: element.confirmed,
-                    deaths: element.deaths,
-                    aChanges: element.aChanges,
-                    cChanges: element.cChanges,
-                    rChanges: element.rChanges,
-                    dChanges: element.dChanges,
+                    country: e.Country,        
+                    confirmed: e.TotalConfirmed,
+                    cChanges: e.NewConfirmed,
+                    deaths: e.TotalDeaths,
+                    dChanges: e.NewDeaths,
+                    recovered: e.TotalRecovered,
+                    rChanges: e.NewRecovered
                 }}
             />
         )
 
         return (
             <div>
-                <h1>India Statewise Data</h1>
+                <h1>CountryWise Data</h1>
                 <table style={{margin: 'auto'}}>
                     <thead>
                         <tr>
-                            <th scope="col">State / Union Territory</th>
-                            <th scope="col">Active</th>
-                            <th scope="col">Cured</th>
-                            <th scope="col">Deaths</th>
+                            <th scope="col">Country</th>
                             <th scope="col">Confirmed</th>
+                            <th scope="col">Recovered</th>
+                            <th scope="col">Deaths</th>
                         </tr>
                         {stateRows}
                     </thead>
