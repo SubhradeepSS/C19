@@ -41,7 +41,7 @@ fetch(globalC)
             let deaths = e.TotalDeaths;
             let dChanges = e.NewDeaths;
             let recovered = e.TotalRecovered;
-            let rChanges = e.NewConfirmed;
+            let rChanges = e.NewRecovered;
 
             tableBody.innerHTML += `<tr>
                                         <td>${country}</td>
