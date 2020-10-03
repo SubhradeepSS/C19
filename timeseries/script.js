@@ -61,8 +61,8 @@ const url = "https://api.covid19india.org/data.json";
 
 fetch(url)
     .then(response => response.json())
-    .then(DATA => {
-        let data = DATA.cases_time_series;
+    .then(resp => {
+        let data = resp.cases_time_series;
         let active = [], confirmed = [], death = [], recovered = [], date = [];
 
         data.forEach(element => {
@@ -72,5 +72,6 @@ fetch(url)
             active.push(parseInt(element.totalconfirmed)-parseInt(element.totaldeceased)-parseInt(element.totalrecovered));
             date.push(element.date);
         });
+        
         axesLinearChart(confirmed, recovered, death, active, date);
     })

@@ -64,34 +64,22 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     data.forEach(element => {
-      let state = element.state;
       let id = element.id.replace("IN-", "");
 
-      // Telangana state code: 
-      //   received from API: "TG",
-      //   in Zingchart: "TL"
-      if(id == "TG")
+      // Telangana state code: received from API: "TG", in Zingchart: "TL"
+      if (id == "TG") {
         id = "TL";
-        
-      let active = element.active;
-      let confirmed = element.confirmed;
-      let recovered = element.recovered;
-      let deaths = element.deaths;
-      let aChanges = element.aChanges;
-      let dChanges = element.dChanges;
-      let cChanges = element.cChanges;
-      let rChanges = element.rChanges;
+      }
 
       chartConfig.shapes[1].options.style.items[id] = {
         tooltip: {
-          text: `State : ${state}\nActive : ${active} (+${aChanges})\nDeaths : ${deaths} (+${dChanges})\nRecovered : ${recovered} (+${rChanges})\nConfirmed : ${confirmed} (+${cChanges})`,
+          text: `State : ${element.state}\nActive : ${element.active} (+${element.aChanges})\nDeaths : ${element.deaths} (+${element.dChanges})\nRecovered : ${element.recovered} (+${element.rChanges})\nConfirmed : ${element.confirmed} (+${element.cChanges})`,
         },
         label: {
           visible: true
         }
       };
     });
-    console.log(chartConfig.shapes[1].options.style.items);
 
     zingchart.loadModules('maps,maps-ind');
     zingchart.render({
@@ -101,4 +89,3 @@ fetch(url)
       width: '100%',
     });
   });
-

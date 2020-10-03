@@ -2,66 +2,52 @@ const url = "https://covid-19india-api.herokuapp.com/global";
 const cors = "https://cors-anywhere.herokuapp.com/";
 const globalC = "https://api.covid19api.com/summary";
 
-let statsRow = document.getElementById('statsRow');
-let updatesDiv = document.getElementById('updates');
-let tableBody = document.getElementById('tableBody');
+const statsRow = document.getElementById('statsRow');
+const updatesDiv = document.getElementById('updates');
+const tableBody = document.getElementById('tableBody');
+
+statsRow.innerHTML = "Loading..."
+updatesDiv.innerHTML = "Loading..."
 
 fetch(cors + url)
     .then(response => response.json())
     .then(data => {
-        let stats = data.data;
-        let updates = data.updates;
+        const stats = data.data;
+        const updates = data.updates;
 
-        let confirmed_cases = stats.confirmed_cases;
-        let active_cases = stats.active_cases;
-        let recovered_cases = stats.recovered_cases;
-        let death_cases = stats.death_cases;
-        let active_rate = stats.active_rate;
-        let death_rate = stats.death_rate;
-        let recovered_rate = stats.recovered_rate;
+        statsRow.innerHTML = `<h3><span class="badge badge-dark">Confirmed : ${stats.confirmed_cases}</span>
+                            <span class="badge badge-danger">Active : ${stats.active_cases} (@${stats.active_rate})</span>
+                            <span class="badge badge-success">Recovered : ${stats.recovered_cases} (@${stats.recovered_rate})</span>
+                            <span class="badge badge-secondary">Death : ${stats.death_cases} (@${stats.death_rate})</span></h3>`;
 
-        statsRow.innerHTML = `<h3><span class="badge badge-dark">Confirmed : ${confirmed_cases}</span>
-                            <span class="badge badge-danger">Active : ${active_cases} (@${active_rate})</span>
-                            <span class="badge badge-success">Recovered : ${recovered_cases} (@${recovered_rate})</span>
-                            <span class="badge badge-secondary">Death : ${death_cases} (@${death_rate})</span></h3>`;
-
+        updatesDiv.innerHTML = ""
         updates.forEach(e => {
-            updatesDiv.innerHTML += `<li class="list-group-item list-group-item-action my-1">${e}</li>`;
-        });
-
-    });
+            updatesDiv.innerHTML += `<li class="list-group-item list-group-item-action my-1">${e}</li>`
+        })
+    })
 
 fetch(globalC)
     .then(response => response.json())
     .then(data => {
         data.Countries.forEach(e => {
-            let country = e.Country;        
-            let confirmed = e.TotalConfirmed;
-            let cChanges = e.NewConfirmed;
-            let deaths = e.TotalDeaths;
-            let dChanges = e.NewDeaths;
-            let recovered = e.TotalRecovered;
-            let rChanges = e.NewRecovered;
-
             tableBody.innerHTML += `<tr>
-                                        <td>${country}</td>
-                                        <td>${confirmed} (+${cChanges})</td>
-                                        <td>${recovered} (+${rChanges})</td>
-                                        <td>${deaths} (+${dChanges})</td>
-                                        
+                                        <td>${e.Country}</td>
+                                        <td>${e.TotalConfirmed} (+${e.NewConfirmed})</td>
+                                        <td>${e.TotalRecovered} (+${e.NewRecovered})</td>
+                                        <td>${e.TotalDeaths} (+${e.NewDeaths})</td> 
                                     </tr>` ;
         })
     })
 
-let searchCountry = document.getElementById('searchCountry');
+const searchCountry = document.getElementById('searchCountry');
 
 searchCountry.addEventListener('input', () => {
-    let inputText = searchCountry.value.toLowerCase();
-    let stateCard = document.getElementsByTagName('tr');
+    const inputText = searchCountry.value.toLowerCase();
+    const stateCard = document.getElementsByTagName('tr');
     Array.from(stateCard).forEach(element => {
-        let td = element.getElementsByTagName('td');
+        const td = element.getElementsByTagName('td');
         if (td[0] !== undefined) {
-            let state = td[0].innerText.toLowerCase();
+            const state = td[0].innerText.toLowerCase();
             if (state.includes(inputText)) {
                 element.style.display = "table-row";
             }
@@ -93,7 +79,6 @@ window.smoothScroll = (target) => {
             return;
         c.scrollTop = a + (b - a) / 30 * i;
         setTimeout(() =>  scroll(c, a, b, i), 20);
-    }
-    
+    }   
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
