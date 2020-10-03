@@ -40,23 +40,7 @@ fetch(globalC)
     })
 
 const searchCountry = document.getElementById('searchCountry');
-
-searchCountry.addEventListener('input', () => {
-    const inputText = searchCountry.value.toLowerCase();
-    const stateCard = document.getElementsByTagName('tr');
-    Array.from(stateCard).forEach(element => {
-        const td = element.getElementsByTagName('td');
-        if (td[0] !== undefined) {
-            const state = td[0].innerText.toLowerCase();
-            if (state.includes(inputText)) {
-                element.style.display = "table-row";
-            }
-            else {
-                element.style.display = "none";
-            }
-        }
-    })
-})
+search(searchCountry, true)
 
 window.smoothScroll = (target) => {
     let scrollContainer = target;

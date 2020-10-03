@@ -71,16 +71,4 @@ fetch(url)
 
 let searchState = document.getElementById('search_State');
 
-searchState.addEventListener('input', () => {
-    let inputText = searchState.value.toLowerCase();
-    let stateCard = document.getElementsByClassName('card');
-    Array.from(stateCard).forEach(element => {
-        let state = element.getElementsByTagName('button')[0].innerText.toLowerCase();
-        if (state.includes(inputText)) {
-            element.style.display = "block";
-        }
-        else {
-            element.style.display = "none";
-        }
-    })
-})
+search(searchState, false)

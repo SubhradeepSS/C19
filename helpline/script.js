@@ -16,19 +16,4 @@ fetch(cors + url)
 
 let searchState = document.getElementById('searchState');
 
-searchState.addEventListener('input', () => {
-    let inputText = searchState.value.toLowerCase();
-    let stateCard = document.getElementsByTagName('tr');
-    Array.from(stateCard).forEach(element => {
-        let td = element.getElementsByTagName('td');
-        if (td[0] !== undefined) {
-            let state = td[0].innerText.toLowerCase();
-            if (state.includes(inputText)) {
-                element.style.display = "table-row";
-            }
-            else {
-                element.style.display = "none";
-            }
-        }
-    })
-})
+search(searchState, true)
