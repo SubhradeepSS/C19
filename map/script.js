@@ -73,7 +73,11 @@ fetch(url)
 
       chartConfig.shapes[1].options.style.items[id] = {
         tooltip: {
-          text: `State : ${element.state}\nActive : ${element.active} (+${element.aChanges})\nDeaths : ${element.deaths} (+${element.dChanges})\nRecovered : ${element.recovered} (+${element.rChanges})\nConfirmed : ${element.confirmed} (+${element.cChanges})`,
+          text: `State : ${element.state}
+          Active : ${element.active} (+${element.aChanges})
+          Deaths : ${element.deaths} (+${element.dChanges})
+          Recovered : ${element.recovered} (+${element.rChanges})
+          Confirmed : ${element.confirmed} (+${element.cChanges})`
         },
         label: {
           visible: true
